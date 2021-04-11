@@ -1,0 +1,19 @@
+{% for part in allparts %}
+            <tr>
+                <td>{{part.partName}}</td>
+                <td>{{part.code}}</td>
+                <td>{{part.units}}</td>
+                <td>{{part.description}}</td>
+                <td>{{part.producer}}</td>
+                <td>{{part.pattern}}</td>
+                <h1>{% for x in part.pattern.all %}
+                    {{ x }}
+                {% endfor %}</h1>
+
+                </td>
+                <td>
+
+
+                </td>
+            </tr>
+ {% endfor %}

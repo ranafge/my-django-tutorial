@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block javascript %}
+<script>
+    $("#id_username").change(function (){
+        var form = $(this).closest('form');
+
+        $.ajax({
+            url:form.attr("data-validate-username"),
+            data: form.serialize(),
+            dataType: 'json',
+            success: function(data){
+                if(data.is_taken){
+                    alert(data.error_message);
+                }
+            }
+        });
+     
+    });
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $.get('/ajax_test/', function(data){
+        alert(data);
+    });
+})
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>This is for ajax view</h1>
+<div style="display: block;">
+<form method="POST"  data-validate-username-url="{% url 'validate-username' %}">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Sing up</button>
+</form>
+</div>
+{% endblock%}

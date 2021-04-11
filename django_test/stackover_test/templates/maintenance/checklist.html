@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {{ form.management_form }}
+    {% for sub_form in form %}
+        Item: {{ sub_form.item.value }}
+        {{ sub_form }}
+    {% endfor %}
+</form>
+
+</body>
+</html>

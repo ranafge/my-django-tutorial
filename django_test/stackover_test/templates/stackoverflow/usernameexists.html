@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block javascript %}
+$("#username_exists_form").on('submit', function(e){
+    e.prventDefault();
+    var username = $(this).find('input').val();
+    $.get('/exists/',
+          {'username': username},   
+          function(response){ $('#response_msg').text(response.msg); }
+    );
+}
+
+)
+{% endblock %}
+{% block content %}
+<p id="'response_msg"></p>
+<form id="username_exists_form" method="GET">
+    Name : <input type="username" name="username"/>
+    <button type="submit">Check</button>
+</form>
+
+{% endblock%}

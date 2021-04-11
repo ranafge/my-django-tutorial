@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <!-- List of uploaded documents -->
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+
+            <li> {{ forloop.counter }}  <a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url 'docfile-upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+            <a> </a>
+            <ul>
+                <x>
+                    <ifblock> {% if documents %}</ifblock>
+            </ul>
+            </x>
+
+        </form>
+ <> </>
+
+<ul>
+    <x>
+        <books>{% for foo in books%}</books>
+    </x>
+</ul>
+</body>
+</html>

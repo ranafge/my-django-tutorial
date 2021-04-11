@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for x in object_list %}
+    {{ x.name }}
+    {{ x.email }}
+    {{ x.country }}
+  <img src="{{ x.image_url|default_if_none:'#' }}" />
+
+{% endfor %}
+
+</body>
+</html>

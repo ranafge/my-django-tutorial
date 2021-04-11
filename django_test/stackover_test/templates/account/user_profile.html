@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}profile{% endblock %}
+ {% block content %}
+{% block body_block %}
+        {% if user.is_authenticated %}
+        <h1>{{ user.username }} welcome to your profile page</h1>
+        <img src="{{ user.photo.url }}" width = "150" height = "150"  />
+        <h2>{{ user.first_name }}</h2>
+        <h2>{{ user.last_name }}</h2>
+
+        {% endif %}
+{% endblock %}
+
+ {% endblock content %}

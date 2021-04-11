@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block main_content %}
+<img class="rounded-circle account-img" src="{{user.profile.url}}" height="100" width="100">
+<h5> First Name: {{user.first_name}} </h5>
+<h5> Last Name: {{user.last_name}} </h5>
+<h5> Username: {{user.username}} </h5>
+<h5> Email: {{user.email}} </h5>
+<p> Bio: {{user.profile.bio}} </p>
+<button class="btn btn-primary" onClick="myFunction()"> UpdateProfile</button>
+<div id ="hide">
+  {% csrf_token %}
+<form method = "POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ p_form|crispy }}
+  <button class="btn btn-outline-info" type="submit">Update </button>
+  </form>
+</div>
+{% endblock %}
+</body>
+</html>

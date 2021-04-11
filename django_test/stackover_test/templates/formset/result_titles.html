@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'robustSearch' %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="form-inline">
+     <input type="file" name="titles_file" class="form-control input-sm mr-2">
+     <button type="submit" class="btn btn-primary">Search</button>
+</div>
+</form>
+{% load humanize %}
+{{mynum|intword}}
+
+{{ request.path }}  #  -without GET parameters
+{{ request.get_full_path }}  # - with GET parameters
+<br>
+<br>
+<br>
+<input type="radio" name="test" value="value1"> Value 1
+<input type="radio" name="test1" value="value2"> Value 2
+<input type="radio" name="test2" value="value3"> Value 3
+
+{{ value|divisibleby:"3" }}
+
+<h1>{% now 'Y' %}</h1>
+</body>
+</html>

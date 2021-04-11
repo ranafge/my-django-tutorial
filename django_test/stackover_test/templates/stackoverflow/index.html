@@ -1,0 +1,30 @@
+<html>
+<script>
+</script>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <div>{{ form.name.label }}</div>
+        <div>{{ form.name }}</div>
+    </div>
+    <div class="form-group">
+        <div>{{ form.comment.label }}</div>
+        <div>{{ form.comment }}</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+</form>
+
+
+<h1>{{commentaries}}</h1>
+<h1>{{form}}</h1>
+
+
+<h1> aSSIGN A NAME VARIABLE VALUE WITH WORLD</h1>
+
+{% with name="World" %}
+<html>
+<div>Hello {{name}}!</div>
+</html>
+{% endwith %}
+
+</html>

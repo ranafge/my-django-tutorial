@@ -1,0 +1,9 @@
+{% load stackoverflow_extras %}
+{% with "shop/"|addstr:shop_name|addstr:"/base.html" as template %}
+    {% include template %}
+{% endwith %}
+
+    {{ post.text }}
+    {{ post.request.user }}
+    {{ post.created_on }}
+    {{ post.total_likes }}

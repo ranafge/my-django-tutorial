@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% now "Y" %}
+
+
+{{ 12457850 }}
+<form method="POST" data-validate-username-url="{% url 'validate-username' %}">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">skusubmit</button>
+</form>
+
+{% for k,v in mydict.items %}
+{{ v }}
+{% endfor %}
+</body>
+</html>
