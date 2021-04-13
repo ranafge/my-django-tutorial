@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
     def get_author(self, obj):
         return obj.author.username
 
-    get_author.short_description = 'POst Author Name'  # header section of the column
+    get_author.short_description = 'Post Author Name'  # header section of the column
     # get_author.admin_order_field = 'author'
 
 
@@ -22,12 +22,27 @@ class ItemAdmin(admin.ModelAdmin):
     def has_add_permission(self, request, obj=None):
         return False
 
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['text', "status", 'created_on', 'author', "date_posted"]
+
+class MyPost(models.Post):
+    class Meta:
+        proxy = True
+
+class MyPostAdmin(PostAdmin):
+    def get_queryset(self, request):
+        return self.model.objects.filter(user=request.user)
+
+
+
 admin.site.register(models.Applicant)
 admin.site.register(models.Item, ItemAdmin)
 admin.site.register(models.Work)
 admin.site.register(models.Part)
 admin.site.register(models.Pattern)
-admin.site.register(models.Post, UserAdmin)
+admin.site.register(models.Post,  PostAdmin)
+admin.site.register(MyPost,  MyPostAdmin)
 admin.site.register(models.A)
 admin.site.register(models.B)
 admin.site.register(models.C)
