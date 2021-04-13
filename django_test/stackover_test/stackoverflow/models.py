@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
@@ -11,6 +12,7 @@ class Work(models.Model):
     body = models.TextField()
     published = models.BooleanField(False)
     date = models.DateTimeField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -18,12 +20,17 @@ class Work(models.Model):
     def get_number_of_work_items(self):
         return self.applicant_set.count()
 
+
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
 class Applicant(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=100)
     country = CountryField(blank_label='(select country)', blank=True, null=True)
     work = models.ForeignKey(Work, on_delete=models.CASCADE, null=True, blank=True)
-    image = models.ImageField(upload_to='up/', blank=True, null=True)
+    image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
 
     @property
     def image_url(self):
@@ -153,6 +160,7 @@ class Item(models.Model):
     description = models.CharField(max_length=200)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     default = models.CharField(max_length=150, default='this is my default', null=True, blank=True)
+    image = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
 
     @property
     def table_name(self):

@@ -17,7 +17,7 @@ class UserAdmin(admin.ModelAdmin):
 # itemmodel readony field
 # Itemadmin is work fine.
 class ItemAdmin(admin.ModelAdmin):
-    readonly_fields = ['sku']
+    readonly_fields = ['sku', 'table_name']
     # disable add model
     def has_add_permission(self, request, obj=None):
         return False
