@@ -24,7 +24,10 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['text', "status", 'created_on', 'author', "date_posted"]
+    list_display = ['text', "status", 'created_on', 'author', "date_posted","total_likes",]
+    def total_likes(self, instance):
+        return instance.total_likes
+    total_likes.boolean = True
 
 class MyPost(models.Post):
     class Meta:
@@ -35,6 +38,8 @@ class MyPostAdmin(PostAdmin):
         return self.model.objects.filter(user=request.user)
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', "created_at",)
 
 admin.site.register(models.Applicant)
 admin.site.register(models.Item, ItemAdmin)
@@ -46,7 +51,7 @@ admin.site.register(MyPost,  MyPostAdmin)
 admin.site.register(models.A)
 admin.site.register(models.B)
 admin.site.register(models.C)
-admin.site.register(models.Comment)
+admin.site.register(models.Comment,CommentAdmin)
 admin.site.register(models.Person)
 admin.site.register(models.PersonScore)
 admin.site.register(models.PersonType)

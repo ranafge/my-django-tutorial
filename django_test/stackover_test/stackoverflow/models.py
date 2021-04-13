@@ -2,6 +2,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
 from django_countries.fields import CountryField
+from django.contrib import admin
+from django.utils.html import format_html
 
 # Create your models here.
 class Work(models.Model):
@@ -80,6 +82,8 @@ class Comment(models.Model):
     def save(self, **kwargs):
         self.name = self.name.capitalize()
         super().save(**kwargs)
+
+
 
 
 class A(models.Model):
