@@ -154,6 +154,10 @@ class Item(models.Model):
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     default = models.CharField(max_length=150, default='this is my default', null=True, blank=True)
 
+    @property
+    def table_name(self):
+        return self._meta.db_table
+
 
     def __str__(self):
         return f'sku is the {self.sku}'
