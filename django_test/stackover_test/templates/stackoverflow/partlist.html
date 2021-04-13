@@ -1,13 +1,13 @@
 {% for part in allparts %}
             <tr>
-                <td>{{part.partName}}</td>
-                <td>{{part.code}}</td>
-                <td>{{part.units}}</td>
-                <td>{{part.description}}</td>
-                <td>{{part.producer}}</td>
-                <td>{{part.pattern}}</td>
+                <td>{{part.partName|default_if_none:""}}</td>
+                <td>{{part.code|default_if_none:""}}</td>
+                <td>{{part.units|default_if_none:""}}</td>
+                <td>{{part.description|default_if_none:""}}</td>
+                <td>{{part.producer|default_if_none:""}}</td>
+                <td>{{part.pattern|default_if_none:""}}</td>
                 <h1>{% for x in part.pattern.all %}
-                    {{ x }}
+                    {{ x|default_if_none:"" }}
                 {% endfor %}</h1>
 
                 </td>
