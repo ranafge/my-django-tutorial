@@ -21,4 +21,5 @@ urlpatterns = [
     path('rooms/delete/<int:pk>/', views.RoomDelete.as_view(), name='room_delete'),
     path('rooms/<int:pk>/', views.RoomDetail.as_view(), name='room_detail'),
     path('sku/', views.new_item_view, name='sku-item'),
+    path('permistion/', views.your_view, name='permission-deny'),
 ]

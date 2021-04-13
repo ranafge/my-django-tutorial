@@ -186,3 +186,9 @@ def new_item_view(request):
     return render(request, 'stackoverflow/skuitem.html', {"form": form, 'mydict': mydict})
 
 # todo new_item_view need to update view
+
+
+from django.core.exceptions import PermissionDenied
+
+def your_view(request):
+    raise PermissionDenied()
