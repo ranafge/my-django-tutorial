@@ -1,19 +1,22 @@
+
 {% for part in allparts %}
-            <tr>
-                <td>{{part.partName|default_if_none:""}}</td>
-                <td>{{part.code|default_if_none:""}}</td>
-                <td>{{part.units|default_if_none:""}}</td>
-                <td>{{part.description|default_if_none:""}}</td>
-                <td>{{part.producer|default_if_none:""}}</td>
-                <td>{{part.pattern|default_if_none:""}}</td>
-                <h1>{% for x in part.pattern.all %}
-                    {{ x|default_if_none:"" }}
-                {% endfor %}</h1>
+<h1>perms</h1>
+{{perms}}
+<tr>
+    <td>{{part.partName|default_if_none:""}}</td>
+    <td>{{part.code|default_if_none:""}}</td>
+    <td>{{part.units|default_if_none:""}}</td>
+    <td>{{part.description|default_if_none:""}}</td>
+    <td>{{part.producer|default_if_none:""}}</td>
+    <td>{{part.pattern|default_if_none:""}}</td>
+    <h1>{% for x in part.pattern.all %}
+        {{ x|default_if_none:"" }}
+        {% endfor %}</h1>
 
-                </td>
-                <td>
+    </td>
+    <td>
 
 
-                </td>
-            </tr>
- {% endfor %}
+    </td>
+</tr>
+{% endfor %}

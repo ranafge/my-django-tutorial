@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<h1>perms</h1>
+{% if 'stackoverflow.view_part' in perms %}
+<p> stackoverflow.change_pattern </p>
+{% endif %}
+
+<br><br><br>
+
 {% for x in object_list %}
     {{ x.name }}
     {{ x.email }}
@@ -12,6 +19,7 @@
   <img src="{{ x.image_url|default_if_none:'#' }}" />
 
 {% endfor %}
-
+<h1>perms</h1>
+{{perms}}
 </body>
 </html>
