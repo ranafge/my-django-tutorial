@@ -192,3 +192,11 @@ from django.core.exceptions import PermissionDenied
 
 def your_view(request):
     raise PermissionDenied()
+
+def django_divisibleby_test(request):
+    posts = models.Post.objects.all()
+    return render(request, 'stackoverflow/post_list.html', {'posts':posts})
+
+
+
+

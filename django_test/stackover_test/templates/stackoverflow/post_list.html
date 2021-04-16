@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for p in posts %}
+    <div class="post width1 height2 column {% if forloop.counter0|divisibleby:4 %}first{% endif %}">
+        <div class="preview">
+        {{forloop.counter0}}
+        </div>
+        <div class="overlay">
+
+        </div>
+        <h2>p.title</h2>
+    </div>
+{% endfor %}
+</body>
+</html>

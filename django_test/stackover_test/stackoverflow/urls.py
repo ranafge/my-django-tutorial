@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path("show/", views.ApplicantListView.as_view(), name='applicant-list'),
     path("parts/", views.partList, name='part-list'),
+    path("posts/", views.django_divisibleby_test, name='post-list'),
     path('like/', views.LikeView, name="like_post"),
     path('index/', views.IndexView.as_view(), name="index"),
     path('home/', views.home, name='home'),
