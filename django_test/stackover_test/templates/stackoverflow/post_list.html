@@ -16,5 +16,10 @@
         <h2>p.title</h2>
     </div>
 {% endfor %}
+
+{% with posts|first as first_object %}
+    {{ first_object.text }}
+{% endwith %}
+
 </body>
 </html>
