@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,13 @@
     <title>Title</title>
 </head>
 <body>
+<h1>INCLUDE TEMPLATE WITH PARAMENTER</h1>
+{% include "stackoverflow/name_snippet.html" with person="Jane" greeting="Hello" only %}
+{{person}}
+{{greeting}}
+
+
+<h1>INCLUDE TEMPLATE WITH PARAMENTER</h1>
 <h1>perms</h1>
 {% if 'stackoverflow.view_part' in perms %}
 <p> stackoverflow.change_pattern </p>
@@ -23,3 +33,5 @@
 {{perms}}
 </body>
 </html>
+
+{% include "files/slider.html" p='php' %}
