@@ -20,6 +20,13 @@
 {% with posts|first as first_object %}
     {{ first_object.text }}
 {% endwith %}
+<br>
+<h1>Slice for  text 2 leter</h1>
+{{ posts.1.text|slice:":2" }}<br>
+<h1>Slice for  text</h1>
+{{ posts.2.text }}<br>
+
+
 
 </body>
 </html>

@@ -1,3 +1,5 @@
+import json
+from django.core import serializers
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -198,5 +200,22 @@ def django_divisibleby_test(request):
     return render(request, 'stackoverflow/post_list.html', {'posts':posts})
 
 
+# serialize model instance
 
+def getModelSerialize(request):
+    obj = models.Post.objects.all()
+    data = serializers.serialize('python', obj)
+    # struct = json.dumps(data[0])
+    return HttpResponse(data)
+
+
+def manufacture(request):
+    if request.method == 'POST':
+        form = forms.ManufacturerModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = forms.ManufacturerModelForm()
+
+    return render(request, 'stackoverflow/manufacture.html', {"form": form})
 

@@ -23,4 +23,6 @@ urlpatterns = [
     path('rooms/<int:pk>/', views.RoomDetail.as_view(), name='room_detail'),
     path('sku/', views.new_item_view, name='sku-item'),
     path('permistion/', views.your_view, name='permission-deny'),
+    path("json-data/", views.getModelSerialize, name='json-data'),
+    path("manufacture-name/", views.manufacture, name='manufacture-name')
 ]

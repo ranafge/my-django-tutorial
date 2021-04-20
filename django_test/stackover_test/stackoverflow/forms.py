@@ -59,3 +59,13 @@ class ItemForm(forms.ModelForm):
             return self.instance.sku
         else:
             return self.fields['sku']
+
+class ManufacturerModelForm(forms.ModelForm):
+    def clean(self):
+        cleaned_data = super(ManufacturerModelForm, self).clean()
+        name = cleaned_data.get('name')
+        if models.Manufacturer.objects.filter(name=name).exists():
+            raise forms.ValidationError('Category already exists')
+    class Meta:
+        model = models.Manufacturer
+        fields ="__all__"
